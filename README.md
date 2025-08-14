@@ -1,6 +1,6 @@
 # 🏆 Clash of Clans Stats - pranav
 
-**Last Updated:** `14-08-2025 20:14:02`
+**Last Updated:** `14-08-2025 20:17:48`
 
 ## 👤 Player Info
 | Field | Value |
