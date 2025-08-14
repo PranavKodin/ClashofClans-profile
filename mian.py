@@ -64,20 +64,20 @@ def get_hero_icon(hero_name):
 def get_spell_icon(spell_name):
     """Get appropriate icon for each spell (PNG image or emoji fallback)"""
     icon_map = {
-        "Lightning Spell": "<img src='assets/spells/lightning_Spell_info.webp' width='20' height='20'>",
-"Healing Spell": "<img src='assets/spells/healing_Spell_info.webp' width='20' height='20'>",
-"Rage Spell": "<img src='assets/spells/rage_Spell_info.webp' width='20' height='20'>",
-"Jump Spell": "<img src='assets/spells/jump_Spell_info.webp' width='20' height='20'>",
-"Freeze Spell": "<img src='assets/spells/freeze_Spell_info.webp' width='20' height='20'>",
-"Clone Spell": "<img src='assets/spells/clone_Spell_info.webp' width='20' height='20'>",
-"Invisibility Spell": "<img src='assets/spells/invisibility_Spell_info.webp' width='20' height='20'>",
-"Poison Spell": "<img src='assets/spells/poison_Spell_info.webp' width='20' height='20'>",
-"Earthquake Spell": "<img src='assets/spells/earthquake_Spell_info.webp' width='20' height='20'>",
-"Haste Spell": "<img src='assets/spells/haste_Spell_info.webp' width='20' height='20'>",
-"Skeleton Spell": "<img src='assets/spells/skeleton_Spell_info.webp' width='20' height='20'>",
-"Bat Spell": "<img src='assets/spells/bat_Spell_info.webp' width='20' height='20'>",
-"Recall Spell": "<img src='assets/spells/recall_Spell_info.webp' width='20' height='20'>",
-"Overgrowth Spell": "<img src='assets/spells/overgrowth_Spell_info.webp' width='20' height='20'>"
+        "Lightning Spell": "<img src='assets/spells/lightning.png' width='20' height='20'>",
+        "Healing Spell": "<img src='assets/spells/healing.png' width='20' height='20'>",
+        "Rage Spell": "<img src='assets/spells/rage.png' width='20' height='20'>",
+        "Jump Spell": "<img src='assets/spells/jump.png' width='20' height='20'>",
+        "Freeze Spell": "<img src='assets/spells/freeze.png' width='20' height='20'>",
+        "Clone Spell": "<img src='assets/spells/clone.png' width='20' height='20'>",
+        "Invisibility Spell": "<img src='assets/spells/invisibility.png' width='20' height='20'>",
+        "Poison Spell": "<img src='assets/spells/poison.png' width='20' height='20'>",
+        "Earthquake Spell": "<img src='assets/spells/earthquake.png' width='20' height='20'>",
+        "Haste Spell": "<img src='assets/spells/haste.png' width='20' height='20'>",
+        "Skeleton Spell": "<img src='assets/spells/skeleton.png' width='20' height='20'>",
+        "Bat Spell": "<img src='assets/spells/bat.png' width='20' height='20'>",
+        "Recall Spell": "<img src='assets/spells/recall.png' width='20' height='20'>",
+        "Overgrowth Spell": "<img src='assets/spells/overgrowth.png' width='20' height='20'>"
 
     }
     return icon_map.get(spell_name, "🪄")
