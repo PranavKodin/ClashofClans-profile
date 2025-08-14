@@ -1,264 +1,253 @@
-#!/usr/bin/env python3
-
 import requests
 import subprocess
-import json
 from datetime import datetime
 
-# Clash of Clans API Configuration
+# === CONFIG ===
 API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjJjYTJmOTNmLTYxNzItNGRhYS1hOThjLTcyNTA4ZjgzYWU5YSIsImlhdCI6MTc1NTE3OTczOCwic3ViIjoiZGV2ZWxvcGVyL2Y0ODExZDMwLWM4MTUtZTY1NS1hMGJjLTBkYjRkMmFiZTQzMyIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjEwMy4xNjAuMTk3LjEwOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.kpIiUvTBSio7k7KFA1fnHSDT8fKgoyuXMuUMBLpndHdL_6UnTpmnq2ubR7fY8azewyz1AmwCilJYjMjvUm8--g"
-PLAYER_TAG = "#9YLV0G0P9"  # Your player tag
+PLAYER_TAG = "#9YLV0G0P9"
+README_PATH = "README.md"
+
 API_URL = f"https://api.clashofclans.com/v1/players/{PLAYER_TAG.replace('#', '%23')}"
+HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
 
-def run_git(command):
-    """Run git command"""
-    result = subprocess.run(f"git {command}", shell=True, capture_output=True, text=True)
-    return result.returncode == 0
 
-def get_clash_data():
-    """Fetch player data from Clash of Clans API"""
-    headers = {
-        'Authorization': f'Bearer {API_TOKEN}',
-        'Accept': 'application/json'
+def fetch_data():
+    res = requests.get(API_URL, headers=HEADERS)
+    if res.status_code != 200:
+        raise Exception(f"API Error: {res.status_code} - {res.text}")
+    return res.json()
+
+
+def get_troop_icon(troop_name):
+    """Get appropriate icon for each troop (PNG image or emoji fallback)"""
+    # PNG images from your assets folder (you need to add these images)
+    icon_map = {
+        "Barbarian": "<img src='assets/troops/barbarian.png' width='20' height='20'>",
+        "Archer": "<img src='assets/troops/archer.png' width='20' height='20'>",
+        "Giant": "<img src='assets/troops/giant.png' width='20' height='20'>",
+        "Goblin": "<img src='assets/troops/goblin.png' width='20' height='20'>",
+        "Wall Breaker": "<img src='assets/troops/wallbreaker.png' width='20' height='20'>",
+        "Balloon": "<img src='assets/troops/balloon.png' width='20' height='20'>",
+        "Wizard": "<img src='assets/troops/wizard.png' width='20' height='20'>",
+        "Healer": "<img src='assets/troops/healer.png' width='20' height='20'>",
+        "Dragon": "<img src='assets/troops/dragon.png' width='20' height='20'>",
+        "P.E.K.K.A": "<img src='assets/troops/pekka.png' width='20' height='20'>",
+        "Minion": "<img src='assets/troops/minion.png' width='20' height='20'>",
+        "Hog Rider": "<img src='assets/troops/hogrider.png' width='20' height='20'>",
+        "Valkyrie": "<img src='assets/troops/valkyrie.png' width='20' height='20'>",
+        "Golem": "<img src='assets/troops/golem.png' width='20' height='20'>",
+        "Witch": "<img src='assets/troops/witch.png' width='20' height='20'>",
+        "Lava Hound": "<img src='assets/troops/lavahound.png' width='20' height='20'>",
+        "Bowler": "<img src='assets/troops/bowler.png' width='20' height='20'>",
+        "Baby Dragon": "<img src='assets/troops/babydragon.png' width='20' height='20'>",
+        "Miner": "<img src='assets/troops/miner.png' width='20' height='20'>",
+        "Electro Dragon": "<img src='assets/troops/electrodragon.png' width='20' height='20'>",
+        "Yeti": "<img src='assets/troops/yeti.png' width='20' height='20'>",
+        "Dragon Rider": "<img src='assets/troops/dragonrider.png' width='20' height='20'>",
+        "Apprentice Warden": "<img src='assets/troops/apprenticewarden.png' width='20' height='20'>"
     }
-    
-    try:
-        response = requests.get(API_URL, headers=headers, timeout=10)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            print(f"API Error: {response.status_code}")
-            return None
-    except Exception as e:
-        print(f"Error fetching data: {e}")
-        return None
+    return icon_map.get(troop_name, "⚔️")
 
-def format_number(num):
-    """Format numbers with commas"""
-    return f"{num:,}"
+def get_hero_icon(hero_name):
+    """Get appropriate icon for each hero (PNG image or emoji fallback)"""
+    icon_map = {
+        "Barbarian King": "<img src='assets/heroes/barbarianking.png' width='20' height='20'>",
+        "Archer Queen": "<img src='assets/heroes/archerqueen.png' width='20' height='20'>",
+        "Grand Warden": "<img src='assets/heroes/grandwarden.png' width='20' height='20'>",
+        "Royal Champion": "<img src='assets/heroes/royalchampion.png' width='20' height='20'>",
+        "Battle Machine": "<img src='assets/heroes/battlemachine.png' width='20' height='20'>",
+        "Battle Copter": "<img src='assets/heroes/battlecopter.png' width='20' height='20'>",
+        "Minion Prince": "<img src='assets/heroes/minionprince.png' width='20' height='20'>"
+    }
+    return icon_map.get(hero_name, "👤")
 
-def get_achievement_stars(achievements, name):
-    """Get stars for a specific achievement"""
-    for achievement in achievements:
-        if achievement['name'] == name:
-            return achievement['stars'], achievement.get('value', 0), achievement.get('target', 0)
-    return 0, 0, 0
+def get_spell_icon(spell_name):
+    """Get appropriate icon for each spell (PNG image or emoji fallback)"""
+    icon_map = {
+        "Lightning Spell": "<img src='assets/spells/lightning_Spell_info.webp' width='20' height='20'>",
+"Healing Spell": "<img src='assets/spells/healing_Spell_info.webp' width='20' height='20'>",
+"Rage Spell": "<img src='assets/spells/rage_Spell_info.webp' width='20' height='20'>",
+"Jump Spell": "<img src='assets/spells/jump_Spell_info.webp' width='20' height='20'>",
+"Freeze Spell": "<img src='assets/spells/freeze_Spell_info.webp' width='20' height='20'>",
+"Clone Spell": "<img src='assets/spells/clone_Spell_info.webp' width='20' height='20'>",
+"Invisibility Spell": "<img src='assets/spells/invisibility_Spell_info.webp' width='20' height='20'>",
+"Poison Spell": "<img src='assets/spells/poison_Spell_info.webp' width='20' height='20'>",
+"Earthquake Spell": "<img src='assets/spells/earthquake_Spell_info.webp' width='20' height='20'>",
+"Haste Spell": "<img src='assets/spells/haste_Spell_info.webp' width='20' height='20'>",
+"Skeleton Spell": "<img src='assets/spells/skeleton_Spell_info.webp' width='20' height='20'>",
+"Bat Spell": "<img src='assets/spells/bat_Spell_info.webp' width='20' height='20'>",
+"Recall Spell": "<img src='assets/spells/recall_Spell_info.webp' width='20' height='20'>",
+"Overgrowth Spell": "<img src='assets/spells/overgrowth_Spell_info.webp' width='20' height='20'>"
 
-def generate_readme(data):
-    """Generate README content from API data"""
-    
-    # Basic player info
-    name = data['name']
-    tag = data['tag']
-    th_level = data['townHallLevel']
-    exp_level = data['expLevel']
-    trophies = data['trophies']
-    best_trophies = data['bestTrophies']
-    war_stars = data['warStars']
-    attack_wins = data['attackWins']
-    defense_wins = data['defenseWins']
-    
-    # Builder base info
-    bh_level = data['builderHallLevel']
-    bb_trophies = data['builderBaseTrophies']
-    best_bb_trophies = data['bestBuilderBaseTrophies']
-    
-    # Clan info
-    clan = data['clan']
-    clan_name = clan['name']
-    clan_tag = clan['tag']
-    clan_level = clan['clanLevel']
-    
-    # League info
-    league = data['league']['name'] if 'league' in data else "Unranked"
-    bb_league = data['builderBaseLeague']['name'] if 'builderBaseLeague' in data else "Unranked"
-    
-    # Role and preferences
-    role = data.get('role', 'member').title()
-    war_pref = "Opted In ✅" if data.get('warPreference') == 'in' else "Opted Out ❌"
-    clan_capital_contrib = data.get('clanCapitalContributions', 0)
-    
-    # Get key achievements
-    achievements = data.get('achievements', [])
-    gold_stars, gold_value, _ = get_achievement_stars(achievements, 'Gold Grab')
-    elixir_stars, elixir_value, _ = get_achievement_stars(achievements, 'Elixir Escapade')
-    de_stars, de_value, _ = get_achievement_stars(achievements, 'Heroic Heist')
-    obstacles_stars, obstacles_value, _ = get_achievement_stars(achievements, 'Nice and Tidy')
-    walls_stars, walls_value, _ = get_achievement_stars(achievements, 'Wall Buster')
-    
-    # Heroes
-    heroes = data.get('heroes', [])
-    
-    # Get top troops (home village only, level 5+)
-    troops = [t for t in data.get('troops', []) if t['village'] == 'home' and t['level'] >= 5]
-    troops.sort(key=lambda x: x['level'], reverse=True)
-    
-    # Get top spells
-    spells = data.get('spells', [])
-    spells.sort(key=lambda x: x['level'], reverse=True)
-    
-    # Labels
-    labels = [label['name'] for label in data.get('labels', [])]
-    
-    readme_content = f"""# 🏰 Clash of Clans Player Profile - {name}
+    }
+    return icon_map.get(spell_name, "🪄")
 
-<div align="center">
 
-[![Player Tag](https://img.shields.io/badge/Player%20Tag-{tag.replace('#', '%23')}-blue?style=for-the-badge)](https://link.clashofclans.com/en?action=OpenPlayerProfile&tag={tag.replace('#', '')})
-[![Town Hall](https://img.shields.io/badge/Town%20Hall-Level%20{th_level}-orange?style=for-the-badge)](https://clashofclans.com)
-[![Trophies](https://img.shields.io/badge/Trophies-{trophies}-yellow?style=for-the-badge)](https://clashofclans.com)
-[![Experience](https://img.shields.io/badge/Experience-Level%20{exp_level}-green?style=for-the-badge)](https://clashofclans.com)
+def build_readme(data):
+    name = data.get("name", "Unknown")
+    trophies = data.get("trophies", 0)
+    bestTrophies = data.get("bestTrophies", 0)
+    expLevel = data.get("expLevel", 0)
+    clan = data.get("clan", {}).get("name", "No Clan")
+    clanLevel = data.get("clan", {}).get("clanLevel", 0)
+    warStars = data.get("warStars", 0)
+    attackWins = data.get("attackWins", 0)
+    defenseWins = data.get("defenseWins", 0)
+    builderHallLevel = data.get("builderHallLevel", 0)
+    builderBaseTrophies = data.get("builderBaseTrophies", 0)
+    role = data.get("role", "Member").title()
+    townHallLevel = data.get("townHallLevel", 0)
+    league = data.get("league", {}).get("name", "Unranked")
+    clanCapitalContributions = data.get("clanCapitalContributions", 0)
+
+    troops = data.get("troops", [])
+    heroes = data.get("heroes", [])
+    spells = data.get("spells", [])
+
+    # Filter and sort troops (only home village, level 5+)
+    home_troops = [t for t in troops if t.get("village") == "home" and t.get("level", 0) >= 5]
+    home_troops.sort(key=lambda x: x.get("level", 0), reverse=True)
+
+    # Filter heroes (only home village)
+    home_heroes = [h for h in heroes if h.get("village") == "home"]
+    home_heroes.sort(key=lambda x: x.get("level", 0), reverse=True)
+
+    # Sort spells by level
+    spells.sort(key=lambda x: x.get("level", 0), reverse=True)
+
+    readme = f"""<div align="center">
+
+# 🏰 {name} - Clash of Clans Stats
+
+![Trophies](https://img.shields.io/badge/Trophies-{trophies}-gold?style=for-the-badge&logo=clash-of-clans)
+![Town Hall](https://img.shields.io/badge/Town%20Hall-{townHallLevel}-orange?style=for-the-badge)
+![Experience](https://img.shields.io/badge/Experience-{expLevel}-green?style=for-the-badge)
+![Clan](https://img.shields.io/badge/Clan-{clan.replace(' ', '%20')}-blue?style=for-the-badge)
 
 </div>
 
 ---
 
-## 🎯 Player Overview
+## 📊 **Player Stats**
 
-| **Stat** | **Value** |
-|----------|-----------|
-| **Name** | {name} |
-| **Tag** | {tag} |
-| **Town Hall Level** | {th_level} |
-| **Experience Level** | {exp_level} |
-| **Current Trophies** | {format_number(trophies)} 🏆 |
-| **Best Trophies** | {format_number(best_trophies)} 🏆 |
-| **War Stars** | {war_stars} ⭐ |
-| **Attack Wins** | {attack_wins} ⚔️ |
-| **Defense Wins** | {defense_wins} 🛡️ |
+<table>
+<tr>
+<td><b>🏆 Trophies</b></td><td>{trophies:,}</td>
+<td><b>🥇 Best</b></td><td>{bestTrophies:,}</td>
+</tr>
+<tr>
+<td><b>⭐ War Stars</b></td><td>{warStars}</td>
+<td><b>⚔️ Attack Wins</b></td><td>{attackWins}</td>
+</tr>
+<tr>
+<td><b>🛡️ Defense Wins</b></td><td>{defenseWins}</td>
+<td><b>🏗️ Builder Hall</b></td><td>{builderHallLevel}</td>
+</tr>
+<tr>
+<td><b>🏛️ Clan Capital</b></td><td>{clanCapitalContributions:,}</td>
+<td><b>🥽 League</b></td><td>{league}</td>
+</tr>
+</table>
 
-## 🏘️ Builder Base Stats
+## 🏰 **Clan Info**
 
-| **Stat** | **Value** |
-|----------|-----------|
-| **Builder Hall Level** | {bh_level} |
-| **Builder Base Trophies** | {format_number(bb_trophies)} 🏆 |
-| **Best Builder Base Trophies** | {format_number(best_bb_trophies)} 🏆 |
+<table>
+<tr>
+<td><b>🦅 Name</b></td><td>{clan}</td>
+<td><b>📊 Level</b></td><td>{clanLevel}</td>
+<td><b>👤 Role</b></td><td>{role}</td>
+</tr>
+</table>
 
-## 🏰 Clan Information
+## ⚔️ **Top Troops** (Lv 5+)
 
-| **Detail** | **Value** |
-|------------|-----------|
-| **Clan Name** | {clan_name} 🦅 |
-| **Clan Tag** | {clan_tag} |
-| **Clan Level** | {clan_level} |
-| **Role** | {role} |
-| **War Preference** | {war_pref} |
-| **Clan Capital Contributions** | {format_number(clan_capital_contrib)} 💰 |
+<table>
+"""
 
-## 🏆 League Status
+    # Add troops in rows of 3
+    for i in range(0, len(home_troops), 3):
+        readme += "<tr>\n"
+        for j in range(3):
+            if i + j < len(home_troops):
+                troop = home_troops[i + j]
+                icon = get_troop_icon(troop.get('name', ''))
+                readme += f"<td><b>{icon} {troop.get('name', '')}</b><br>{troop.get('level', 0)}/{troop.get('maxLevel', 0)}</td>\n"
+            else:
+                readme += "<td></td>\n"
+        readme += "</tr>\n"
 
-| **League Type** | **League** |
-|-----------------|------------|
-| **Home Village** | {league} |
-| **Builder Base** | {bb_league} |
+    readme += """</table>
 
-## 🏅 Key Achievements
+## 👑 **Heroes**
 
-| **Achievement** | **Progress** | **Status** |
-|-----------------|--------------|------------|
-| **Gold Grab** | {format_number(gold_value)} Gold | {"🌟" * gold_stars}{"⭐" * (3-gold_stars)} |
-| **Elixir Escapade** | {format_number(elixir_value)} Elixir | {"🌟" * elixir_stars}{"⭐" * (3-elixir_stars)} |
-| **Heroic Heist** | {format_number(de_value)} Dark Elixir | {"🌟" * de_stars}{"⭐" * (3-de_stars)} |
-| **Nice and Tidy** | {format_number(obstacles_value)} Obstacles | {"🌟" * obstacles_stars}{"⭐" * (3-obstacles_stars)} |
-| **Wall Buster** | {format_number(walls_value)} Walls | {"🌟" * walls_stars}{"⭐" * (3-walls_stars)} |
+<table>
+<tr>
+"""
 
-## ⚔️ Heroes"""
+    # Add heroes horizontally
+    for hero in home_heroes:
+        icon = get_hero_icon(hero.get('name', ''))
+        readme += f"<td align=\"center\"><b>{icon}<br>{hero.get('name', '')}</b><br>{hero.get('level', 0)}/{hero.get('maxLevel', 0)}</td>\n"
 
-    # Add heroes section
-    if heroes:
-        readme_content += "\n\n| **Hero** | **Level** | **Equipment** |\n|----------|-----------|---------------|\n"
-        for hero in heroes:
-            equipment_text = ""
-            if 'equipment' in hero and hero['equipment']:
-                equipment_text = ", ".join([f"{eq['name']} (Lv.{eq['level']})" for eq in hero['equipment']])
-            readme_content += f"| **{hero['name']}** | {hero['level']}/{hero['maxLevel']} | {equipment_text} |\n"
+    readme += """</tr>
+</table>
 
-    # Add troops section
-    if troops:
-        readme_content += "\n## ⚔️ Top Troops\n\n| **Troop** | **Level** | **Max Level** |\n|-----------|-----------|---------------|\n"
-        for troop in troops[:10]:  # Top 10 troops
-            readme_content += f"| {troop['name']} | {troop['level']}/{troop['maxLevel']} | {'🗡️' if 'Barbarian' in troop['name'] else '🏹' if 'Archer' in troop['name'] else '🐉' if 'Dragon' in troop['name'] else '⚔️'} |\n"
+## 🪄 **Spells**
 
-    # Add spells section
-    if spells:
-        readme_content += "\n## 🪄 Spells\n\n| **Spell** | **Level** | **Max Level** |\n|-----------|-----------|---------------|\n"
-        for spell in spells[:8]:  # Top 8 spells
-            readme_content += f"| {spell['name']} | {spell['level']}/{spell['maxLevel']} | {'⚡' if 'Lightning' in spell['name'] else '💚' if 'Healing' in spell['name'] else '😤' if 'Rage' in spell['name'] else '🪄'} |\n"
+<table>
+"""
 
-    # Add labels section
-    if labels:
-        readme_content += "\n## 🎮 Player Labels\n\n"
-        label_emojis = {"Base Designing": "🎨", "Farming": "🌾", "Competitive": "🏆", "Friendly": "😊", "Talkative": "💬"}
-        for label in labels:
-            emoji = label_emojis.get(label, "🏷️")
-            readme_content += f"- {emoji} **{label}**\n"
+    # Add spells in rows of 4
+    for i in range(0, len(spells), 4):
+        readme += "<tr>\n"
+        for j in range(4):
+            if i + j < len(spells):
+                spell = spells[i + j]
+                icon = get_spell_icon(spell.get('name', ''))
+                readme += f"<td><b>{icon} {spell.get('name', '').replace(' Spell', '')}</b><br>{spell.get('level', 0)}/{spell.get('maxLevel', 0)}</td>\n"
+            else:
+                readme += "<td></td>\n"
+        readme += "</tr>\n"
 
-    # Footer
-    readme_content += f"""
+    readme += f"""</table>
 
 ---
 
 <div align="center">
 
-**Last Updated**: {datetime.now().strftime('%B %d, %Y at %H:%M UTC')}  
-**War Preference**: {war_pref}  
-**Status**: Active Player
+### 🔄 **Last Updated**: {datetime.now().strftime('%B %d, %Y at %H:%M UTC')}
 
-[![Clash of Clans](https://img.shields.io/badge/Clash%20of%20Clans-Player-blue?style=for-the-badge&logo=supercell)](https://clashofclans.com)
+![Clash of Clans](https://img.shields.io/badge/Clash%20of%20Clans-Active%20Player-brightgreen?style=for-the-badge&logo=supercell)
+![GitHub](https://img.shields.io/badge/GitHub-Auto%20Updated-blue?style=for-the-badge&logo=github)
+
+*📡 Auto-generated from the Clash of Clans API*
 
 </div>"""
 
-    return readme_content
+    return readme
 
-def main():
-    print("🤖 Fetching latest Clash of Clans stats...")
-    
-    # Get data from API
-    clash_data = get_clash_data()
-    if not clash_data:
-        print("❌ Failed to fetch Clash data")
-        return
-    
-    print(f"✅ Successfully fetched data for {clash_data['name']}")
-    
-    # Generate README content
-    readme_content = generate_readme(clash_data)
-    
-    # Write to README file
-    with open('README.md', 'w', encoding='utf-8') as f:
-        f.write(readme_content)
-    
-    print("📝 README.md updated successfully!")
-    
-    # Git operations
-    print("📤 Staging changes...")
-    if not run_git("add README.md"):
-        print("❌ Failed to stage changes")
-        return
-    
-    # Check if there are changes to commit
-    result = subprocess.run("git diff --staged --quiet", shell=True)
-    if result.returncode == 0:
-        print("ℹ️ No changes to commit")
-        return
-    
-    # Commit changes
-    commit_msg = f"Update Clash of Clans stats - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
-    print(f"💾 Committing: {commit_msg}")
-    if not run_git(f'commit -m "{commit_msg}"'):
-        print("❌ Failed to commit changes")
-        return
-    
-    # Push changes
-    print("🚀 Pushing to remote...")
-    if not run_git("push"):
-        print("❌ Failed to push changes")
-        return
-    
-    print("✅ Successfully updated and pushed Clash of Clans stats!")
-    print(f"🏆 Current trophies: {clash_data['trophies']}")
-    print(f"🏰 Town Hall: {clash_data['townHallLevel']}")
+
+def save_readme(content):
+    with open(README_PATH, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def git_commit_push():
+    subprocess.run(["git", "add", README_PATH], check=True)
+    subprocess.run(["git", "commit", "-m", f"🔄 Auto-update Clash of Clans stats - {datetime.now().strftime('%Y-%m-%d %H:%M')}"], check=True)
+    subprocess.run(["git", "push"], check=True)
+
 
 if __name__ == "__main__":
-    main()
+    print(" Fetching Clash of Clans data...")
+    player_data = fetch_data()
+
+    print(" Building colorful README.md...")
+    readme_content = build_readme(player_data)
+    save_readme(readme_content)
+
+    print(" Committing and pushing changes...")
+    git_commit_push()
+
+    print(" Done! README.md updated and pushed.")
+    print(f" Current trophies: {player_data.get('trophies', 0)}")
