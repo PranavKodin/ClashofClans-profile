@@ -46,27 +46,27 @@
 
 <table>
 <tr>
-<td><b>🗡️ Barbarian</b><br>8/12</td>
-<td><b>🏹 Archer</b><br>8/13</td>
-<td><b>🗿 Giant</b><br>8/13</td>
+<td><b><img src='assets/troops/barbarian.png' width='20' height='20'> Barbarian</b><br>8/12</td>
+<td><b><img src='assets/troops/archer.png' width='20' height='20'> Archer</b><br>8/13</td>
+<td><b><img src='assets/troops/giant.png' width='20' height='20'> Giant</b><br>8/13</td>
 </tr>
 <tr>
-<td><b>🔮 Wizard</b><br>8/13</td>
-<td><b>👺 Goblin</b><br>7/9</td>
-<td><b>💣 Wall Breaker</b><br>7/13</td>
+<td><b><img src='assets/troops/wizard.png' width='20' height='20'> Wizard</b><br>8/13</td>
+<td><b><img src='assets/troops/goblin.png' width='20' height='20'> Goblin</b><br>7/9</td>
+<td><b><img src='assets/troops/wallbreaker.png' width='20' height='20'> Wall Breaker</b><br>7/13</td>
 </tr>
 <tr>
-<td><b>🎈 Balloon</b><br>7/12</td>
-<td><b>⚔️ P.E.K.K.A</b><br>7/12</td>
-<td><b>🐷 Hog Rider</b><br>6/14</td>
+<td><b><img src='assets/troops/balloon.png' width='20' height='20'> Balloon</b><br>7/12</td>
+<td><b><img src='assets/troops/pekka.png' width='20' height='20'> P.E.K.K.A</b><br>7/12</td>
+<td><b><img src='assets/troops/hogrider.png' width='20' height='20'> Hog Rider</b><br>6/14</td>
 </tr>
 <tr>
-<td><b>🪨 Golem</b><br>6/14</td>
-<td><b>🐉 Dragon</b><br>5/12</td>
-<td><b>🧚 Minion</b><br>5/13</td>
+<td><b><img src='assets/troops/golem.png' width='20' height='20'> Golem</b><br>6/14</td>
+<td><b><img src='assets/troops/dragon.png' width='20' height='20'> Dragon</b><br>5/12</td>
+<td><b><img src='assets/troops/minion.png' width='20' height='20'> Minion</b><br>5/13</td>
 </tr>
 <tr>
-<td><b>🛡️ Valkyrie</b><br>5/11</td>
+<td><b><img src='assets/troops/valkyrie.png' width='20' height='20'> Valkyrie</b><br>5/11</td>
 <td></td>
 <td></td>
 </tr>
@@ -76,10 +76,10 @@
 
 <table>
 <tr>
-<td align="center"><b>👸<br>Archer Queen</b><br>42/100</td>
-<td align="center"><b>👑<br>Barbarian King</b><br>41/100</td>
-<td align="center"><b>👹<br>Minion Prince</b><br>30/90</td>
-<td align="center"><b>🧙‍♂️<br>Grand Warden</b><br>12/75</td>
+<td align="center"><b><img src='assets/heroes/archerqueen.png' width='20' height='20'><br>Archer Queen</b><br>42/100</td>
+<td align="center"><b><img src='assets/heroes/barbarianking.png' width='20' height='20'><br>Barbarian King</b><br>41/100</td>
+<td align="center"><b><img src='assets/heroes/minionprince.png' width='20' height='20'><br>Minion Prince</b><br>30/90</td>
+<td align="center"><b><img src='assets/heroes/grandwarden.png' width='20' height='20'><br>Grand Warden</b><br>12/75</td>
 </tr>
 </table>
 
@@ -87,22 +87,22 @@
 
 <table>
 <tr>
-<td><b>⚡ Lightning</b><br>7/12</td>
-<td><b>💚 Healing</b><br>7/11</td>
-<td><b>😡 Rage</b><br>5/6</td>
-<td><b>☠️ Poison</b><br>4/11</td>
+<td><b><img src='assets/spells/lightning_Spell_info.webp' width='20' height='20'> Lightning</b><br>7/12</td>
+<td><b><img src='assets/spells/healing_Spell_info.webp' width='20' height='20'> Healing</b><br>7/11</td>
+<td><b><img src='assets/spells/rage_Spell_info.webp' width='20' height='20'> Rage</b><br>5/6</td>
+<td><b><img src='assets/spells/poison_Spell_info.webp' width='20' height='20'> Poison</b><br>4/11</td>
 </tr>
 <tr>
-<td><b>💨 Haste</b><br>4/6</td>
-<td><b>🌋 Earthquake</b><br>3/5</td>
-<td><b>🦘 Jump</b><br>2/5</td>
-<td><b>❄️ Freeze</b><br>2/7</td>
+<td><b><img src='assets/spells/haste_Spell_info.webp' width='20' height='20'> Haste</b><br>4/6</td>
+<td><b><img src='assets/spells/earthquake_Spell_info.webp' width='20' height='20'> Earthquake</b><br>3/5</td>
+<td><b><img src='assets/spells/jump_Spell_info.webp' width='20' height='20'> Jump</b><br>2/5</td>
+<td><b><img src='assets/spells/freeze_Spell_info.webp' width='20' height='20'> Freeze</b><br>2/7</td>
 </tr>
 <tr>
-<td><b>👥 Clone</b><br>2/8</td>
-<td><b>💀 Skeleton</b><br>1/8</td>
-<td><b>🦇 Bat</b><br>1/7</td>
-<td><b>👻 Invisibility</b><br>1/4</td>
+<td><b><img src='assets/spells/clone_Spell_info.webp' width='20' height='20'> Clone</b><br>2/8</td>
+<td><b><img src='assets/spells/skeleton_Spell_info.webp' width='20' height='20'> Skeleton</b><br>1/8</td>
+<td><b><img src='assets/spells/bat_Spell_info.webp' width='20' height='20'> Bat</b><br>1/7</td>
+<td><b><img src='assets/spells/invisibility_Spell_info.webp' width='20' height='20'> Invisibility</b><br>1/4</td>
 </tr>
 </table>
 
@@ -110,7 +110,7 @@
 
 <div align="center">
 
-### 🔄 **Last Updated**: August 14, 2025 at 20:47 UTC
+### 🔄 **Last Updated**: August 14, 2025 at 21:15 UTC
 
 ![Clash of Clans](https://img.shields.io/badge/Clash%20of%20Clans-Active%20Player-brightgreen?style=for-the-badge&logo=supercell)
 ![GitHub](https://img.shields.io/badge/GitHub-Auto%20Updated-blue?style=for-the-badge&logo=github)
