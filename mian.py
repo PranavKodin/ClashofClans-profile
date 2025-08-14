@@ -1,9 +1,12 @@
 import requests
 import subprocess
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # === CONFIG ===
-API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjJjYTJmOTNmLTYxNzItNGRhYS1hOThjLTcyNTA4ZjgzYWU5YSIsImlhdCI6MTc1NTE3OTczOCwic3ViIjoiZGV2ZWxvcGVyL2Y0ODExZDMwLWM4MTUtZTY1NS1hMGJjLTBkYjRkMmFiZTQzMyIsInNjb3BlcyI6WyJjbGFzaCJdLCJsaW1pdHMiOlt7InRpZXIiOiJkZXZlbG9wZXIvc2lsdmVyIiwidHlwZSI6InRocm90dGxpbmcifSx7ImNpZHJzIjpbIjEwMy4xNjAuMTk3LjEwOCJdLCJ0eXBlIjoiY2xpZW50In1dfQ.kpIiUvTBSio7k7KFA1fnHSDT8fKgoyuXMuUMBLpndHdL_6UnTpmnq2ubR7fY8azewyz1AmwCilJYjMjvUm8--g"
+API_TOKEN = os.getenv("cocapi")
 PLAYER_TAG = "#9YLV0G0P9"
 README_PATH = "README.md"
 
