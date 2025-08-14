@@ -1,13 +1,23 @@
-# 🏆 Clash of Clans Stats
+# 🏆 Clash of Clans Stats - pranav
 
-**Last Updated:** 14-08-2025 19:46:34
+**Last Updated:** `14-08-2025 20:14:02`
 
-## Player: pranav (#9YLV0G0P9)
+## 👤 Player Info
+| Field | Value |
+|-------|-------|
+| **Name** | pranav |
+| **Tag** | #9YLV0G0P9 |
+| **Experience Level** | 🎯 119 |
+| **Clan** | 🏰 Hawks (member) |
+| **Town Hall Level** | 🏠 11 |
+| **Builder Hall Level** | 🛠️ 10 |
 
-- **Town Hall Level:** 11
-- **Trophies:** 1891
-- **War Stars:** 118
-- **Clan:** Hawks
+## 📊 Battle Stats
+| Stat | Value |
+|------|-------|
+| 🏆 **Trophies** | 1891 |
+| 🏅 **Best Trophies** | 1943 |
+| ⚔️ **War Stars** | 118 |
 
 ---
-*Auto-updated every time script runs.*
+*💡 This file updates automatically via Python script.*
