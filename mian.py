@@ -22,62 +22,62 @@ def get_troop_icon(troop_name):
     """Get appropriate icon for each troop (PNG image or emoji fallback)"""
     # PNG images from your assets folder (you need to add these images)
     icon_map = {
-        "Barbarian": "<img src='assets/troops/barbarian.png' width='20' height='20'>",
-        "Archer": "<img src='assets/troops/archer.png' width='20' height='20'>",
-        "Giant": "<img src='assets/troops/giant.png' width='20' height='20'>",
-        "Goblin": "<img src='assets/troops/goblin.png' width='20' height='20'>",
-        "Wall Breaker": "<img src='assets/troops/wallbreaker.png' width='20' height='20'>",
-        "Balloon": "<img src='assets/troops/balloon.png' width='20' height='20'>",
-        "Wizard": "<img src='assets/troops/wizard.png' width='20' height='20'>",
-        "Healer": "<img src='assets/troops/healer.png' width='20' height='20'>",
-        "Dragon": "<img src='assets/troops/dragon.png' width='20' height='20'>",
-        "P.E.K.K.A": "<img src='assets/troops/pekka.png' width='20' height='20'>",
-        "Minion": "<img src='assets/troops/minion.png' width='20' height='20'>",
-        "Hog Rider": "<img src='assets/troops/hogrider.png' width='20' height='20'>",
-        "Valkyrie": "<img src='assets/troops/valkyrie.png' width='20' height='20'>",
-        "Golem": "<img src='assets/troops/golem.png' width='20' height='20'>",
-        "Witch": "<img src='assets/troops/witch.png' width='20' height='20'>",
-        "Lava Hound": "<img src='assets/troops/lavahound.png' width='20' height='20'>",
-        "Bowler": "<img src='assets/troops/bowler.png' width='20' height='20'>",
-        "Baby Dragon": "<img src='assets/troops/babydragon.png' width='20' height='20'>",
-        "Miner": "<img src='assets/troops/miner.png' width='20' height='20'>",
-        "Electro Dragon": "<img src='assets/troops/electrodragon.png' width='20' height='20'>",
-        "Yeti": "<img src='assets/troops/yeti.png' width='20' height='20'>",
-        "Dragon Rider": "<img src='assets/troops/dragonrider.png' width='20' height='20'>",
-        "Apprentice Warden": "<img src='assets/troops/apprenticewarden.png' width='20' height='20'>"
+        "Barbarian": "<img src='assets/troops/barbarian.png' width='50' height='50'>",
+        "Archer": "<img src='assets/troops/archer.png' width='50' height='50'>",
+        "Giant": "<img src='assets/troops/giant.png' width='50' height='50'>",
+        "Goblin": "<img src='assets/troops/goblin.png' width='50' height='50'>",
+        "Wall Breaker": "<img src='assets/troops/wallbreaker.png' width='50' height='50'>",
+        "Balloon": "<img src='assets/troops/balloon.png' width='50' height='50'>",
+        "Wizard": "<img src='assets/troops/wizard.png' width='50' height='50'>",
+        "Healer": "<img src='assets/troops/healer.png' width='50' height='50'>",
+        "Dragon": "<img src='assets/troops/dragon.png' width='50' height='50'>",
+        "P.E.K.K.A": "<img src='assets/troops/pekka.png' width='50' height='50'>",
+        "Minion": "<img src='assets/troops/minion.png' width='50' height='50'>",
+        "Hog Rider": "<img src='assets/troops/hogrider.png' width='50' height='50'>",
+        "Valkyrie": "<img src='assets/troops/valkyrie.png' width='50' height='50'>",
+        "Golem": "<img src='assets/troops/golem.png' width='50' height='50'>",
+        "Witch": "<img src='assets/troops/witch.png' width='50' height='50'>",
+        "Lava Hound": "<img src='assets/troops/lavahound.png' width='50' height='50'>",
+        "Bowler": "<img src='assets/troops/bowler.png' width='50' height='50'>",
+        "Baby Dragon": "<img src='assets/troops/babydragon.png' width='50' height='50'>",
+        "Miner": "<img src='assets/troops/miner.png' width='50' height='50'>",
+        "Electro Dragon": "<img src='assets/troops/electrodragon.png' width='50' height='50'>",
+        "Yeti": "<img src='assets/troops/yeti.png' width='50' height='50'>",
+        "Dragon Rider": "<img src='assets/troops/dragonrider.png' width='50' height='50'>",
+        "Apprentice Warden": "<img src='assets/troops/apprenticewarden.png' width='50' height='50'>"
     }
     return icon_map.get(troop_name, "⚔️")
 
 def get_hero_icon(hero_name):
     """Get appropriate icon for each hero (PNG image or emoji fallback)"""
     icon_map = {
-        "Barbarian King": "<img src='assets/heroes/barbarianking.png' width='20' height='20'>",
-        "Archer Queen": "<img src='assets/heroes/archerqueen.png' width='20' height='20'>",
-        "Grand Warden": "<img src='assets/heroes/grandwarden.png' width='20' height='20'>",
-        "Royal Champion": "<img src='assets/heroes/royalchampion.png' width='20' height='20'>",
-        "Battle Machine": "<img src='assets/heroes/battlemachine.png' width='20' height='20'>",
-        "Battle Copter": "<img src='assets/heroes/battlecopter.png' width='20' height='20'>",
-        "Minion Prince": "<img src='assets/heroes/minionprince.png' width='20' height='20'>"
+        "Barbarian King": "<img src='assets/heroes/barbarianking.png' width='50' height='50'>",
+        "Archer Queen": "<img src='assets/heroes/archerqueen.png' width='50' height='50'>",
+        "Grand Warden": "<img src='assets/heroes/grandwarden.png' width='50' height='50'>",
+        "Royal Champion": "<img src='assets/heroes/royalchampion.png' width='50' height='50'>",
+        "Battle Machine": "<img src='assets/heroes/battlemachine.png' width='50' height='50'>",
+        "Battle Copter": "<img src='assets/heroes/battlecopter.png' width='50' height='50'>",
+        "Minion Prince": "<img src='assets/heroes/minionprince.png' width='50' height='50'>"
     }
     return icon_map.get(hero_name, "👤")
 
 def get_spell_icon(spell_name):
     """Get appropriate icon for each spell (PNG image or emoji fallback)"""
     icon_map = {
-        "Lightning Spell": "<img src='assets/spells/lightning.png' width='20' height='20'>",
-        "Healing Spell": "<img src='assets/spells/healing.png' width='20' height='20'>",
-        "Rage Spell": "<img src='assets/spells/rage.png' width='20' height='20'>",
-        "Jump Spell": "<img src='assets/spells/jump.png' width='20' height='20'>",
-        "Freeze Spell": "<img src='assets/spells/freeze.png' width='20' height='20'>",
-        "Clone Spell": "<img src='assets/spells/clone.png' width='20' height='20'>",
-        "Invisibility Spell": "<img src='assets/spells/invisibility.png' width='20' height='20'>",
-        "Poison Spell": "<img src='assets/spells/poison.png' width='20' height='20'>",
-        "Earthquake Spell": "<img src='assets/spells/earthquake.png' width='20' height='20'>",
-        "Haste Spell": "<img src='assets/spells/haste.png' width='20' height='20'>",
-        "Skeleton Spell": "<img src='assets/spells/skeleton.png' width='20' height='20'>",
-        "Bat Spell": "<img src='assets/spells/bat.png' width='20' height='20'>",
-        "Recall Spell": "<img src='assets/spells/recall.png' width='20' height='20'>",
-        "Overgrowth Spell": "<img src='assets/spells/overgrowth.png' width='20' height='20'>"
+        "Lightning Spell": "<img src='assets/spells/lightning.png' width='50' height='50'>",
+        "Healing Spell": "<img src='assets/spells/healing.png' width='50' height='50'>",
+        "Rage Spell": "<img src='assets/spells/rage.png' width='50' height='50'>",
+        "Jump Spell": "<img src='assets/spells/jump.png' width='50' height='50'>",
+        "Freeze Spell": "<img src='assets/spells/freeze.png' width='50' height='50'>",
+        "Clone Spell": "<img src='assets/spells/clone.png' width='50' height='50'>",
+        "Invisibility Spell": "<img src='assets/spells/invisibility.png' width='50' height='50'>",
+        "Poison Spell": "<img src='assets/spells/poison.png' width='50' height='50'>",
+        "Earthquake Spell": "<img src='assets/spells/earthquake.png' width='50' height='50'>",
+        "Haste Spell": "<img src='assets/spells/haste.png' width='50' height='50'>",
+        "Skeleton Spell": "<img src='assets/spells/skeleton.png' width='50' height='50'>",
+        "Bat Spell": "<img src='assets/spells/bat.png' width='50' height='50'>",
+        "Recall Spell": "<img src='assets/spells/recall.png' width='50' height='50'>",
+        "Overgrowth Spell": "<img src='assets/spells/overgrowth.png' width='50' height='50'>"
 
     }
     return icon_map.get(spell_name, "🪄")
