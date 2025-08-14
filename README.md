@@ -87,22 +87,22 @@
 
 <table>
 <tr>
-<td><b><img src='assets/spells/lightning_Spell_info.webp' width='20' height='20'> Lightning</b><br>7/12</td>
-<td><b><img src='assets/spells/healing_Spell_info.webp' width='20' height='20'> Healing</b><br>7/11</td>
-<td><b><img src='assets/spells/rage_Spell_info.webp' width='20' height='20'> Rage</b><br>5/6</td>
-<td><b><img src='assets/spells/poison_Spell_info.webp' width='20' height='20'> Poison</b><br>4/11</td>
+<td><b><img src='assets/spells/lightning.png' width='20' height='20'> Lightning</b><br>7/12</td>
+<td><b><img src='assets/spells/healing.png' width='20' height='20'> Healing</b><br>7/11</td>
+<td><b><img src='assets/spells/rage.png' width='20' height='20'> Rage</b><br>5/6</td>
+<td><b><img src='assets/spells/poison.png' width='20' height='20'> Poison</b><br>4/11</td>
 </tr>
 <tr>
-<td><b><img src='assets/spells/haste_Spell_info.webp' width='20' height='20'> Haste</b><br>4/6</td>
-<td><b><img src='assets/spells/earthquake_Spell_info.webp' width='20' height='20'> Earthquake</b><br>3/5</td>
-<td><b><img src='assets/spells/jump_Spell_info.webp' width='20' height='20'> Jump</b><br>2/5</td>
-<td><b><img src='assets/spells/freeze_Spell_info.webp' width='20' height='20'> Freeze</b><br>2/7</td>
+<td><b><img src='assets/spells/haste.png' width='20' height='20'> Haste</b><br>4/6</td>
+<td><b><img src='assets/spells/earthquake.png' width='20' height='20'> Earthquake</b><br>3/5</td>
+<td><b><img src='assets/spells/jump.png' width='20' height='20'> Jump</b><br>2/5</td>
+<td><b><img src='assets/spells/freeze.png' width='20' height='20'> Freeze</b><br>2/7</td>
 </tr>
 <tr>
-<td><b><img src='assets/spells/clone_Spell_info.webp' width='20' height='20'> Clone</b><br>2/8</td>
-<td><b><img src='assets/spells/skeleton_Spell_info.webp' width='20' height='20'> Skeleton</b><br>1/8</td>
-<td><b><img src='assets/spells/bat_Spell_info.webp' width='20' height='20'> Bat</b><br>1/7</td>
-<td><b><img src='assets/spells/invisibility_Spell_info.webp' width='20' height='20'> Invisibility</b><br>1/4</td>
+<td><b><img src='assets/spells/clone.png' width='20' height='20'> Clone</b><br>2/8</td>
+<td><b><img src='assets/spells/skeleton.png' width='20' height='20'> Skeleton</b><br>1/8</td>
+<td><b><img src='assets/spells/bat.png' width='20' height='20'> Bat</b><br>1/7</td>
+<td><b><img src='assets/spells/invisibility.png' width='20' height='20'> Invisibility</b><br>1/4</td>
 </tr>
 </table>
 
@@ -110,7 +110,7 @@
 
 <div align="center">
 
-### 🔄 **Last Updated**: August 14, 2025 at 21:31 UTC
+### 🔄 **Last Updated**: August 14, 2025 at 21:47 UTC
 
 ![Clash of Clans](https://img.shields.io/badge/Clash%20of%20Clans-Active%20Player-brightgreen?style=for-the-badge&logo=supercell)
 ![GitHub](https://img.shields.io/badge/GitHub-Auto%20Updated-blue?style=for-the-badge&logo=github)
