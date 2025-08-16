@@ -2,7 +2,7 @@
 
 # 🏰 pranav - Clash of Clans Stats
 
-![Trophies](https://img.shields.io/badge/Trophies-1876-gold?style=for-the-badge&logo=clash-of-clans)
+![Trophies](https://img.shields.io/badge/Trophies-1875-gold?style=for-the-badge&logo=clash-of-clans)
 ![Town Hall](https://img.shields.io/badge/Town%20Hall-11-orange?style=for-the-badge)
 ![Experience](https://img.shields.io/badge/Experience-119-green?style=for-the-badge)
 ![Clan](https://img.shields.io/badge/Clan-Hawks-blue?style=for-the-badge)
@@ -15,7 +15,7 @@
 
 <table>
 <tr>
-<td><b>🏆 Trophies</b></td><td>1,876</td>
+<td><b>🏆 Trophies</b></td><td>1,875</td>
 <td><b>🥇 Best</b></td><td>1,943</td>
 </tr>
 <tr>
@@ -110,7 +110,7 @@
 
 <div align="center">
 
-### 🔄 **Last Updated**: August 15, 2025 at 17:00 UTC
+### 🔄 **Last Updated**: August 16, 2025 at 12:51 UTC
 
 ![Clash of Clans](https://img.shields.io/badge/Clash%20of%20Clans-Active%20Player-brightgreen?style=for-the-badge&logo=supercell)
 ![GitHub](https://img.shields.io/badge/GitHub-Auto%20Updated-blue?style=for-the-badge&logo=github)
