@@ -2,7 +2,7 @@
 
 # 🏰 pranav - Clash of Clans Stats
 
-![Trophies](https://img.shields.io/badge/Trophies-1870-gold?style=for-the-badge&logo=clash-of-clans)
+![Trophies](https://img.shields.io/badge/Trophies-1857-gold?style=for-the-badge&logo=clash-of-clans)
 ![Town Hall](https://img.shields.io/badge/Town%20Hall-11-orange?style=for-the-badge)
 ![Experience](https://img.shields.io/badge/Experience-119-green?style=for-the-badge)
 ![Clan](https://img.shields.io/badge/Clan-Hawks-blue?style=for-the-badge)
@@ -15,7 +15,7 @@
 
 <table>
 <tr>
-<td><b>🏆 Trophies</b></td><td>1,870</td>
+<td><b>🏆 Trophies</b></td><td>1,857</td>
 <td><b>🥇 Best</b></td><td>1,943</td>
 </tr>
 <tr>
@@ -23,7 +23,7 @@
 <td><b>⚔️ Attack Wins</b></td><td>9</td>
 </tr>
 <tr>
-<td><b>🛡️ Defense Wins</b></td><td>2</td>
+<td><b>🛡️ Defense Wins</b></td><td>3</td>
 <td><b>🏗️ Builder Hall</b></td><td>10</td>
 </tr>
 <tr>
@@ -58,7 +58,7 @@
 <tr>
 <td><b><img src='assets/troops/balloon.png' width='50' height='50'> Balloon</b><br>7/12</td>
 <td><b><img src='assets/troops/pekka.png' width='50' height='50'> P.E.K.K.A</b><br>7/12</td>
-<td><b><img src='assets/troops/hogrider.png' width='50' height='50'> Hog Rider</b><br>6/14</td>
+<td><b><img src='assets/troops/hogrider.png' width='50' height='50'> Hog Rider</b><br>7/14</td>
 </tr>
 <tr>
 <td><b><img src='assets/troops/golem.png' width='50' height='50'> Golem</b><br>6/14</td>
@@ -76,8 +76,8 @@
 
 <table>
 <tr>
+<td align="center"><b><img src='assets/heroes/barbarianking.png' width='50' height='50'><br>Barbarian King</b><br>42/100</td>
 <td align="center"><b><img src='assets/heroes/archerqueen.png' width='50' height='50'><br>Archer Queen</b><br>42/100</td>
-<td align="center"><b><img src='assets/heroes/barbarianking.png' width='50' height='50'><br>Barbarian King</b><br>41/100</td>
 <td align="center"><b><img src='assets/heroes/minionprince.png' width='50' height='50'><br>Minion Prince</b><br>30/90</td>
 <td align="center"><b><img src='assets/heroes/grandwarden.png' width='50' height='50'><br>Grand Warden</b><br>12/75</td>
 </tr>
@@ -110,7 +110,7 @@
 
 <div align="center">
 
-### 🔄 **Last Updated**: August 17, 2025 at 01:29 UTC
+### 🔄 **Last Updated**: August 17, 2025 at 10:06 UTC
 
 ![Clash of Clans](https://img.shields.io/badge/Clash%20of%20Clans-Active%20Player-brightgreen?style=for-the-badge&logo=supercell)
 ![GitHub](https://img.shields.io/badge/GitHub-Auto%20Updated-blue?style=for-the-badge&logo=github)
