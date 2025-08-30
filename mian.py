@@ -102,27 +102,46 @@ def build_readme(data):
     townHallLevel = data.get("townHallLevel", 0)
     league = data.get("league", {}).get("name", "Unranked")
     clanCapitalContributions = data.get("clanCapitalContributions", 0)
-
+    
+    # Additional data fields
+    achievements = data.get("achievements", [])
+    labels = data.get("labels", [])
     troops = data.get("troops", [])
     heroes = data.get("heroes", [])
     spells = data.get("spells", [])
-
+    
+    # Calculate additional stats
+    totalTroops = len([t for t in troops if t.get("village") == "home"])
+    maxedTroops = len([t for t in troops if t.get("village") == "home" and t.get("level", 0) == t.get("maxLevel", 0)])
+    totalHeroes = len([h for h in heroes if h.get("village") == "home"])
+    maxedHeroes = len([h for h in heroes if h.get("village") == "home" and h.get("level", 0) == h.get("maxLevel", 0)])
+    totalSpells = len(spells)
+    maxedSpells = len([s for s in spells if s.get("level", 0) == s.get("maxLevel", 0)])
+    
     # Filter and sort troops (only home village, level 5+)
     home_troops = [t for t in troops if t.get("village") == "home" and t.get("level", 0) >= 5]
     home_troops.sort(key=lambda x: x.get("level", 0), reverse=True)
-
+    
     # Filter heroes (only home village)
     home_heroes = [h for h in heroes if h.get("village") == "home"]
     home_heroes.sort(key=lambda x: x.get("level", 0), reverse=True)
-
+    
     # Sort spells by level
     spells.sort(key=lambda x: x.get("level", 0), reverse=True)
+    
+    # Get top achievements
+    top_achievements = sorted(achievements, key=lambda x: x.get("stars", 0), reverse=True)[:5]
+    
+    # Calculate progress percentages
+    troop_progress = (maxedTroops / totalTroops * 100) if totalTroops > 0 else 0
+    hero_progress = (maxedHeroes / totalHeroes * 100) if totalHeroes > 0 else 0
+    spell_progress = (maxedSpells / totalSpells * 100) if totalSpells > 0 else 0
 
     readme = f"""<div align="center">
 
-# 🏰 {name} - Clash of Clans Stats
+# 🏰 {name} - Clash of Clans Profile
 
-![Trophies](https://img.shields.io/badge/Trophies-{trophies}-gold?style=for-the-badge&logo=clash-of-clans)
+![Trophies](https://img.shields.io/badge/Trophies-{trophies:,}-gold?style=for-the-badge&logo=clash-of-clans)
 ![Town Hall](https://img.shields.io/badge/Town%20Hall-{townHallLevel}-orange?style=for-the-badge)
 ![Experience](https://img.shields.io/badge/Experience-{expLevel}-green?style=for-the-badge)
 ![Clan](https://img.shields.io/badge/Clan-{clan.replace(' ', '%20')}-blue?style=for-the-badge)
@@ -131,12 +150,12 @@ def build_readme(data):
 
 ---
 
-## 📊 **Player Stats**
+## 📊 **Player Overview**
 
 <table>
 <tr>
-<td><b>🏆 Trophies</b></td><td>{trophies:,}</td>
-<td><b>🥇 Best</b></td><td>{bestTrophies:,}</td>
+<td><b>🏆 Current Trophies</b></td><td>{trophies:,}</td>
+<td><b>🥇 Best Trophies</b></td><td>{bestTrophies:,}</td>
 </tr>
 <tr>
 <td><b>⭐ War Stars</b></td><td>{warStars}</td>
@@ -152,17 +171,65 @@ def build_readme(data):
 </tr>
 </table>
 
-## 🏰 **Clan Info**
+## 🏰 **Clan Information**
 
 <table>
 <tr>
-<td><b>🦅 Name</b></td><td>{clan}</td>
-<td><b>📊 Level</b></td><td>{clanLevel}</td>
-<td><b>👤 Role</b></td><td>{role}</td>
+<td><b>🦅 Clan Name</b></td><td>{clan}</td>
+<td><b>📊 Clan Level</b></td><td>{clanLevel}</td>
+<td><b>👤 Your Role</b></td><td>{role}</td>
 </tr>
 </table>
 
-## ⚔️ **Top Troops** (Lv 5+)
+### 🏆 **War & Battle Statistics**
+
+<table>
+<tr>
+<td><b>⚔️ Total Attack Wins</b></td><td>{attackWins:,}</td>
+<td><b>🛡️ Total Defense Wins</b></td><td>{defenseWins:,}</td>
+</tr>
+<tr>
+<td><b>⭐ War Stars Earned</b></td><td>{warStars}</td>
+<td><b>🏛️ Clan Capital Contributions</b></td><td>{clanCapitalContributions:,}</td>
+</tr>
+</table>
+
+## 📈 **Progress Overview**
+
+<table>
+<tr>
+<td><b>⚔️ Troops Progress</b></td><td>{maxedTroops}/{totalTroops} Maxed</td><td><b>📊</b></td><td>{troop_progress:.1f}%</td>
+</tr>
+<tr>
+<td><b>👑 Heroes Progress</b></td><td>{maxedHeroes}/{totalHeroes} Maxed</td><td><b>📊</b></td><td>{hero_progress:.1f}%</td>
+</tr>
+<tr>
+<td><b>🪄 Spells Progress</b></td><td>{maxedSpells}/{totalSpells} Maxed</td><td><b>📊</b></td><td>{spell_progress:.1f}%</td>
+</tr>
+</table>
+
+### 🎯 **Progress Visualization**
+
+<div align="center">
+
+#### ⚔️ **Troops Progress**
+```
+{'█' * int(troop_progress / 5)}{'░' * (20 - int(troop_progress / 5))} {troop_progress:.1f}%
+```
+
+#### 👑 **Heroes Progress**
+```
+{'█' * int(hero_progress / 5)}{'░' * (20 - int(hero_progress / 5))} {hero_progress:.1f}%
+```
+
+#### 🪄 **Spells Progress**
+```
+{'█' * int(spell_progress / 5)}{'░' * (20 - int(spell_progress / 5))} {spell_progress:.1f}%
+```
+
+</div>
+
+## ⚔️ **Top Troops** (Level 5+)
 
 <table>
 """
@@ -174,45 +241,133 @@ def build_readme(data):
             if i + j < len(home_troops):
                 troop = home_troops[i + j]
                 icon = get_troop_icon(troop.get('name', ''))
-                readme += f"<td><b>{icon} {troop.get('name', '')}</b><br>{troop.get('level', 0)}/{troop.get('maxLevel', 0)}</td>\n"
+                level = troop.get('level', 0)
+                max_level = troop.get('maxLevel', 0)
+                progress_bar = "█" * (level // 2) + "░" * ((max_level - level) // 2)
+                readme += f"<td><b>{icon} {troop.get('name', '')}</b><br>{level}/{max_level}<br><code>{progress_bar}</code></td>\n"
             else:
                 readme += "<td></td>\n"
         readme += "</tr>\n"
 
     readme += """</table>
 
-## 👑 **Heroes**
+## 👑 **Heroes Progress**
 
 <table>
 <tr>
 """
 
-    # Add heroes horizontally
+    # Add heroes horizontally with progress bars
     for hero in home_heroes:
         icon = get_hero_icon(hero.get('name', ''))
-        readme += f"<td align=\"center\"><b>{icon}<br>{hero.get('name', '')}</b><br>{hero.get('level', 0)}/{hero.get('maxLevel', 0)}</td>\n"
+        level = hero.get('level', 0)
+        max_level = hero.get('maxLevel', 0)
+        progress_bar = "█" * (level // 2) + "░" * ((max_level - level) // 2)
+        readme += f"<td align=\"center\"><b>{icon}<br>{hero.get('name', '')}</b><br>{level}/{max_level}<br><code>{progress_bar}</code></td>\n"
 
     readme += """</tr>
 </table>
 
-## 🪄 **Spells**
+## 🪄 **Spells Progress**
 
 <table>
 """
 
-    # Add spells in rows of 4
+    # Add spells in rows of 4 with progress bars
     for i in range(0, len(spells), 4):
         readme += "<tr>\n"
         for j in range(4):
             if i + j < len(spells):
                 spell = spells[i + j]
                 icon = get_spell_icon(spell.get('name', ''))
-                readme += f"<td><b>{icon} {spell.get('name', '').replace(' Spell', '')}</b><br>{spell.get('level', 0)}/{spell.get('maxLevel', 0)}</td>\n"
+                level = spell.get('level', 0)
+                max_level = spell.get('maxLevel', 0)
+                progress_bar = "█" * (level // 2) + "░" * ((max_level - level) // 2)
+                readme += f"<td><b>{icon} {spell.get('name', '').replace(' Spell', '')}</b><br>{level}/{max_level}<br><code>{progress_bar}</code></td>\n"
             else:
                 readme += "<td></td>\n"
         readme += "</tr>\n"
 
-    readme += f"""</table>
+    readme += """</table>
+
+## 🏆 **Top Achievements**
+
+<table>
+"""
+
+    # Add top achievements
+    for achievement in top_achievements:
+        name = achievement.get('name', 'Unknown')
+        stars = achievement.get('stars', 0)
+        value = achievement.get('value', 0)
+        target = achievement.get('target', 0)
+        readme += f"<tr><td><b>🏅 {name}</b></td><td>{stars}⭐</td><td>{value:,}/{target:,}</td></tr>\n"
+
+    readme += """</table>
+
+## 🏷️ **Player Labels**
+
+<div align="center">
+"""
+
+    # Add player labels
+    for label in labels[:8]:  # Show first 8 labels
+        name = label.get('name', 'Unknown')
+        icon_url = label.get('iconUrls', {}).get('small', '')
+        if icon_url:
+            readme += f"<img src='{icon_url}' alt='{name}' width='50' height='50' style='margin: 5px;'>\n"
+        else:
+            readme += f"<span style='background: #f0f0f0; padding: 5px 10px; border-radius: 15px; margin: 5px; display: inline-block;'>{name}</span>\n"
+
+    readme += """</div>
+
+## 🎯 **Seasonal Challenges & Events**
+
+<div align="center">
+
+### 🏆 **Current Season Status**
+![Season Pass](https://img.shields.io/badge/Season%20Pass-Active-brightgreen?style=for-the-badge)
+![Clan Games](https://img.shields.io/badge/Clan%20Games-Participating-blue?style=for-the-badge)
+![War League](https://img.shields.io/badge/War%20League-Competing-orange?style=for-the-badge)
+
+</div>
+
+## 📊 **Detailed Statistics**
+
+<details>
+<summary><b>🔍 Click to view detailed stats</b></summary>
+
+### 🏠 **Home Village Stats**
+- **Town Hall Level**: {townHallLevel}
+- **Experience Level**: {expLevel}
+- **Current Trophies**: {trophies:,}
+- **Best Trophies**: {bestTrophies:,}
+- **War Stars**: {warStars}
+- **Attack Wins**: {attackWins:,}
+- **Defense Wins**: {defenseWins:,}
+
+### 🏗️ **Builder Base Stats**
+- **Builder Hall Level**: {builderHallLevel}
+- **Builder Base Trophies**: {builderBaseTrophies:,}
+
+### 🏛️ **Clan Stats**
+- **Clan Name**: {clan}
+- **Clan Level**: {clanLevel}
+- **Your Role**: {role}
+- **Clan Capital Contributions**: {clanCapitalContributions:,}
+
+### 📈 **Progress Metrics**
+- **Troops**: {maxedTroops}/{totalTroops} maxed ({troop_progress:.1f}%)
+- **Heroes**: {maxedHeroes}/{totalHeroes} maxed ({hero_progress:.1f}%)
+- **Spells**: {maxedSpells}/{totalSpells} maxed ({spell_progress:.1f}%)
+
+### 🎮 **Game Activity**
+- **Total Troops**: {totalTroops}
+- **Total Heroes**: {totalHeroes}
+- **Total Spells**: {totalSpells}
+- **Achievement Stars**: {sum([a.get('stars', 0) for a in achievements])}
+
+</details>
 
 ---
 
@@ -222,6 +377,16 @@ def build_readme(data):
 
 ![Clash of Clans](https://img.shields.io/badge/Clash%20of%20Clans-Active%20Player-brightgreen?style=for-the-badge&logo=supercell)
 ![GitHub](https://img.shields.io/badge/GitHub-Auto%20Updated-blue?style=for-the-badge&logo=github)
+![Python](https://img.shields.io/badge/Python-3.7+-blue?style=for-the-badge&logo=python)
+![API](https://img.shields.io/badge/API-Clash%20of%20Clans%20v1-red?style=for-the-badge)
+
+---
+
+### 📊 **Profile Statistics**
+![Total Troops](https://img.shields.io/badge/Total%20Troops-{totalTroops}-blue?style=flat-square)
+![Total Heroes](https://img.shields.io/badge/Total%20Heroes-{totalHeroes}-purple?style=flat-square)
+![Total Spells](https://img.shields.io/badge/Total%20Spells-{totalSpells}-green?style=flat-square)
+![War Stars](https://img.shields.io/badge/War%20Stars-{warStars}-gold?style=flat-square)
 
 *📡 Auto-generated from the Clash of Clans API*
 
@@ -254,3 +419,5 @@ if __name__ == "__main__":
 
     print(" Done! README.md updated and pushed.")
     print(f" Current trophies: {player_data.get('trophies', 0)}")
+    
+    
